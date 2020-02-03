@@ -9,6 +9,7 @@
   Details, Details, Details, Details, Details, Details, Details, 
 
   https://github.com/jumblobinley/LWSC_Auto_Rob.git
+  (See git examples below)
 
   
   --Created 2020 Dec 15
@@ -126,6 +127,9 @@ if (sensVals[4] == true){
     }
     if (isZero == true) {motorControl(MOTOR2, 0); motorControl(MOTOR1, 0);}
 
+    //ad  a new line at the end of the output data
+    Serial.println(" ");
+
 }
 
 
@@ -150,7 +154,7 @@ void sensorRead(void) {
  Serial.print(sensVals[4]);
  Serial.print(", ");
  Serial.print(sensAn);
- Serial.println();
+ Serial.print(" -- ");
 }
 
 // filters the data recieved so the motors can understand what actions to take
@@ -163,10 +167,11 @@ void dataFilter(void) {
 // commmands sent to the motor controller
 bool motorControl(int motorNum, int motorPow) {
   
-  Serial.print("----");
+  Serial.print(" --> ");
   Serial.print(motorNum);
   Serial.print(", ");
-  Serial.println(motorPow);
+  Serial.print(motorPow);
+  Serial.print(" <-- ");
   
   if (motorNum == MOTOR1) {
     analogWrite(MOTOR1, motorPow); 
@@ -181,3 +186,22 @@ bool motorControl(int motorNum, int motorPow) {
  }
 return true;
 }
+
+/* GitHub Examples
+ *  
+ *  ---Write code
+ *  ---Add file to repo:
+ *  git add <filename>
+ *  
+ *   --Attach a remote origin to your code repo, Do this one time
+ *  git remote add origin git@github.com:jumblobinley/LWSC_Auto_Rob.git
+ *  (Note: ssh keys are set up for this computer.  Other students will have to set up thier keys)
+ *  
+ *  ---When done writing code, commit your code
+ *  cd ~/Documents/ArduinoSketchBook/autocar_testing
+ *  git commit -m "comment"
+ *  
+ *  ---Push code to github in the cloud
+ *  git push -u origin master
+ *  
+ */
